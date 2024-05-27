@@ -33,3 +33,22 @@
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
+
+.todo-text {
+  flex-grow: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.todo-delete-button {
+  background-color: none;
+  font-size: 14px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
