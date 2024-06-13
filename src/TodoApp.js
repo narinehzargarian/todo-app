@@ -8,7 +8,7 @@ function TodoApp () {
 
   const addTask = () => {
     if (input.trim()) {
-      setTasks([...tasks, {text: input, completed: false}])
+      setTasks([...tasks, {text: input, completed: false, note: ''}])
       setInput('')
     }
   }
@@ -23,7 +23,15 @@ function TodoApp () {
     setTasks(newTasks)
   }
 
+  const addNote = (index, content) => {
+    const newTasks = [...tasks]
+    newTasks[index].note = content
+    setTasks(newTasks)
+  }
+
   /* TODO: Add note to the task */
+  /* TODO: Give priority (Move up/ down) */
+  /* TODO: Hide it under the options */ 
 
   return (
     <div className="todo-container">
@@ -45,8 +53,14 @@ function TodoApp () {
             >
                {task.text}
             </span>
+            <span className={`todo-note`}>
+              {task.note}
+            </span>
             <button className="todo-delete-button" onClick={() => deleteTask(index)}>
               Delete
+            </button>
+            <button className="todo-add-note-button" onClick={()=> addNote(index, "some notes")}>
+              Add Notes
             </button>
           </li>
         ))}

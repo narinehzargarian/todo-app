@@ -52,3 +52,11 @@
   margin-left: 10px;
   cursor: pointer;
 }
+
+.todo-add-note-button {
+  background-color: none;
+  font-size: 14px;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
