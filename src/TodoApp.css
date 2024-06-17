@@ -29,9 +29,16 @@
 .todo-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px;
   border-bottom: 1px solid #ddd;
+}
+
+.task-line {  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .todo-text {
@@ -45,18 +52,11 @@
   color: grey;
 }
 
-.todo-delete-button {
-  background-color: none;
-  font-size: 14px;
-  border: none;
-  margin-left: 10px;
-  cursor: pointer;
-}
 
-.todo-add-note-button {
-  background-color: none;
-  font-size: 14px;
+.todo-delete-button {
+  background: none;
+  font-size: 12px;
   border: none;
-  margin-left: 10px;
+  margin: 5px 0;
   cursor: pointer;
 }

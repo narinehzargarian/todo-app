@@ -8,7 +8,7 @@ function TodoApp () {
 
   const addTask = () => {
     if (input.trim()) {
-      setTasks([...tasks, {text: input, completed: false, note: ''}])
+      setTasks([...tasks, {text: input, completed: false, note: '', tempNote: ''}])
       setInput('')
     }
   }
@@ -17,18 +17,12 @@ function TodoApp () {
     const newTasks = tasks.filter((_, i) =>  i !== index)  
     setTasks(newTasks)
   }
+
   const toggleTaskCompletion = (index) => {
-    const newTasks = [...tasks]
-    newTasks[index].completed = !newTasks[index].completed
-    setTasks(newTasks)
+    setTasks(prevTasks => prevTasks.map((task, i) =>
+      i === index? {...task, completed: !task.completed} : task
+    ))
   }
-
-  const addNote = (index, content) => {
-    const newTasks = [...tasks]
-    newTasks[index].note = content
-    setTasks(newTasks)
-  }
-
   /* TODO: Add note to the task */
   /* TODO: Give priority (Move up/ down) */
   /* TODO: Hide it under the options */ 
@@ -47,25 +41,20 @@ function TodoApp () {
       <ul className="todo-list">
         {tasks.map((task, index) => (
           <li key={index} className="todo-item">
-            <span
-              className= {`todo-text ${task.completed? 'completed': ''}`}
-              onClick={() => toggleTaskCompletion(index)}
-            >
-               {task.text}
-            </span>
-            <span className={`todo-note`}>
-              {task.note}
-            </span>
+            <div className="task-line">
+              <span
+                className= {`todo-text ${task.completed? 'completed': ''}`}
+                onClick={() => toggleTaskCompletion(index)}
+              >
+                {task.text}
+              </span>
+            </div>
             <button className="todo-delete-button" onClick={() => deleteTask(index)}>
               Delete
-            </button>
-            <button className="todo-add-note-button" onClick={()=> addNote(index, "some notes")}>
-              Add Notes
             </button>
           </li>
         ))}
       </ul>
-
     </div>
   )
 }
